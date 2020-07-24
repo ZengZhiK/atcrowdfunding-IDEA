@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+
+		<!-- 抑制注释生成 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- mvn mybatis-generator:generate 配置数据库位置 ，配置虚拟机上的mysql ip地址；不采用安全协议连接，否则无法逆向生成 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/atcrowdfunding"
+                        userId="root" password="zzk970323@Mysql">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- javaBean生成在哪里 -->
+        <javaModelGenerator
+                targetPackage="com.atguigu.crowd.bean"
+                targetProject="..\atcrowdfunding04-admin-entity\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- sqlMap sql映射文件（xml mapper文件） -->
+        <sqlMapGenerator targetPackage="mybatis.mapper"
+                         targetProject="..\atcrowdfunding02-admin-webui\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- javaClient：java接口生成的地方 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.atguigu.crowd.mapper"
+                             targetProject="..\atcrowdfunding03-admin-component\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 映射的表格，这里值atcrowdfunding数据库下所有表格都进行逆向工程 -->
+         <table schema="" tableName="%"/>
+    </context>
+</generatorConfiguration> 
