@@ -18,7 +18,7 @@
     <properties>
         <!-- SSM框架 -->
         <!-- Spring框架 -->
-        <spring.version>4.3.8.RELEASE</spring.version>
+        <spring.version>6.0.0</spring.version>
         <!-- Mybatis框架 -->
         <mybatis.version>3.4.0</mybatis.version>
         <!-- Mybatis与Spring整合 -->
